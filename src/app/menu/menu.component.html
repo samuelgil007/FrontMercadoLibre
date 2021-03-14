@@ -1,0 +1,53 @@
+<mat-toolbar style="background-color: #FFE600; border: 1px solid #BAB1AF;">
+  <img src="assets/img/logo.png" class="logo">
+  <span style="color: #2d3277;">Mercado Fake</span>
+  <span class="example-spacer">
+    <form class="example-form">
+      <mat-form-field class="example-full-width inputMercado">
+        <mat-label>Busqueda</mat-label>
+        <input (keydown.enter)="realizarBusqueda()" type="text" [(ngModel)]="busqueda" matInput placeholder="Ipad"
+          name="something" style="background-color: #FFE600;">
+        <mat-icon class="teamSelector" (click)="realizarBusqueda()">search</mat-icon>
+      </mat-form-field>
+    </form>
+  </span>
+</mat-toolbar>
+
+<ng-container *ngIf="resultados.length > 0; else elseTemplate">
+
+  <div class="paginator">
+    <ngb-pagination #PrincipalPaginator [(page)]="pagina" [pageSize]="50" [maxSize]="11" [collectionSize]="total"
+      (pageChange)='paginador($event)'>
+    </ngb-pagination>
+  </div>
+
+  <div class="resultados">
+    <mat-grid-list cols="2" rowHeight="2:1" gutterSize="10px">
+      <ng-container *ngFor="let res of resultados">
+
+        <mat-grid-tile class="fondo teamSelector">
+          <img class="images imagen" src={{res.thumbnail}} />
+          <p></p>
+          <b class="titulo">{{res.title}}</b>
+          <p></p>
+          <div class="descripcion"><b>Precio: </b>$ {{res.price.toLocaleString()}}</div>
+
+          <div class="descripcion"><b>ID del vendedor: </b>{{res.seller.id}}</div>
+
+          <div class="envio" *ngIf="res.shipping.free_shipping == true">Envío gratis</div>
+        </mat-grid-tile>
+
+      </ng-container>
+    </mat-grid-list>
+  </div>
+  <div class="paginator">
+    <ngb-pagination
+      [(page)]="pagina"
+      [pageSize]="PrincipalPaginator.pageSize" [maxSize]="PrincipalPaginator.maxSize" [collectionSize]="total"
+      (pageChange)='paginador($event)'>
+    </ngb-pagination>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="sinResultados">No hay resultados por el momento</div>
+</ng-template>

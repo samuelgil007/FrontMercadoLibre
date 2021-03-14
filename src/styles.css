@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.example-spacer {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .inputMercado{
+    width: 1000px;
+  }
+  
+.search-bar { background-color: #222; }
+.search-bar * { color: white !important; }
+
+.md-errors-spacer { display:none; }
+
+
+@media only screen and (max-width: 600px) {
+    .inputMercado {
+        width: 100%
+  }
+}
+.teamSelector
+{
+  cursor: pointer
+}
+.main{
+  background-color: #ededed;
+}
+.logo{
+  max-width: 20px;
+  max-height: 20px;
+}
