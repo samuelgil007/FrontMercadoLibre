@@ -1,10 +1,10 @@
 <mat-toolbar style="background-color: #FFE600; border: 1px solid #BAB1AF;">
-  <img src="assets/img/logo.png" class="logo">
-  <span style="color: #2d3277;">Mercado Fake</span>
+  <img src="assets/img/logo.png" class="logo teamSelector" [routerLink]="['/main']">
+  <span style="color: #2d3277;" class="logo teamSelector" [routerLink]="['/main']">Mercado Fake</span>
   <span class="example-spacer">
     <form class="example-form">
       <mat-form-field class="example-full-width inputMercado">
-        <mat-label>Busqueda</mat-label>
+        <mat-label>Escriba el nombre de un producto</mat-label>
         <input (keydown.enter)="realizarBusqueda()" type="text" [(ngModel)]="busqueda" matInput placeholder="Ipad"
           name="something" style="background-color: #FFE600;">
         <mat-icon class="teamSelector" (click)="realizarBusqueda()">search</mat-icon>
@@ -21,18 +21,20 @@
     </ngb-pagination>
   </div>
 
+
+
   <div class="resultados">
     <mat-grid-list cols="2" rowHeight="2:1" gutterSize="10px">
-      <ng-container *ngFor="let res of resultados">
+      <ng-container *ngFor="let res of resultados; index as i">
 
-        <mat-grid-tile class="fondo teamSelector">
+        <mat-grid-tile class="fondo teamSelector" (click)="guardarDatos()" [routerLink]="['/detalles', res.id]">
           <img class="images imagen" src={{res.thumbnail}} />
           <p></p>
           <b class="titulo">{{res.title}}</b>
           <p></p>
           <div class="descripcion"><b>Precio: </b>$ {{res.price.toLocaleString()}}</div>
 
-          <div class="descripcion"><b>ID del vendedor: </b>{{res.seller.id}}</div>
+          <div class="descripcion"><b>Vendedor: </b>{{owners[res.seller.id]}}</div>
 
           <div class="envio" *ngIf="res.shipping.free_shipping == true">Envío gratis</div>
         </mat-grid-tile>
@@ -41,10 +43,8 @@
     </mat-grid-list>
   </div>
   <div class="paginator">
-    <ngb-pagination
-      [(page)]="pagina"
-      [pageSize]="PrincipalPaginator.pageSize" [maxSize]="PrincipalPaginator.maxSize" [collectionSize]="total"
-      (pageChange)='paginador($event)'>
+    <ngb-pagination [(page)]="pagina" [pageSize]="PrincipalPaginator.pageSize" [maxSize]="PrincipalPaginator.maxSize"
+      [collectionSize]="total" (pageChange)='paginador($event)'>
     </ngb-pagination>
   </div>
 </ng-container>

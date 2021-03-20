@@ -1,1 +1,48 @@
-<p>detalle works!</p>
+<mat-toolbar style="background-color: #FFE600; border: 1px solid #BAB1AF;">
+  <img src="assets/img/logo.png" class="logo teamSelector" [routerLink]="['/main']">
+  <span style="color: #2d3277;" class="logo teamSelector" [routerLink]="['/main']">Mercado Fake</span>
+  <span class="example-spacer">
+  </span>
+</mat-toolbar>
+<img src="assets/img/return.png" class="return teamSelector" [routerLink]="['/main']">
+
+
+<ng-container *ngIf="producto!=undefined && owner!=undefined && opiniones!=undefined">
+  <div class="resultados">
+    <div class="descripcionProducto">
+      <div><b>{{producto.title}} </b> </div>
+      <ng-container *ngIf="descuento; else elseTemplate2">
+        <div> <b>Precio: </b> <s> $ {{producto.original_price.toLocaleString()}}</s> $
+          {{producto.price.toLocaleString()}}  <b style="color: green;" >{{porcentajeDescuento}}% OFF</b></div>
+      </ng-container>
+      <ng-template #elseTemplate2>
+        <div> <b>Precio:</b> ${{producto.price.toLocaleString()}} </div>
+      </ng-template>
+      <div><b>Vendido por:</b> {{owner.nickname}}</div>
+    </div>
+    <div><img class="imagen" src={{producto.pictures[0].url}} /></div>
+  </div>
+
+  <div class="resultados">
+    <p></p>
+    <h1 class="tituloCriticas">Críticas:</h1>
+    <ng-container *ngIf="opiniones.reviews.length > 0; else elseTemplate">
+
+      <mat-grid-list cols="2" rowHeight="2:1" gutterSize="10px">
+        <ng-container *ngFor="let res of opiniones.reviews">
+          <mat-grid-tile class="fondo">
+            <b class="titulo">{{res.title}}</b>
+            <!-- <bar-rating class="descripcion" [(rate)]="res.rate" [max]="5"></bar-rating> -->
+            <div class="descripcion">{{res.content}}</div>
+
+          </mat-grid-tile>
+
+        </ng-container>
+      </mat-grid-list>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div class="sinResultados">No hay criticas por el momento</div>
+      <div class="sinResultados" style="opacity:0;">as</div>
+    </ng-template>
+  </div>
+</ng-container>

@@ -1,0 +1,78 @@
+.sinResultados {
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    margin-top:100px;
+    font-size: 200%;
+}
+.fondo{
+    text-align: justify;
+    border: 1px solid #BAB1AF;
+}
+.resultados{
+    margin-top:40px;
+    width: 1000px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:white;
+    border-radius: 2px;
+    border-color: black;
+}
+.imagen{
+    max-width: 400px;
+    max-height: 400px;
+    margin-left:auto;
+    margin-right:auto;
+
+}
+.titulo{
+    position:absolute;
+    margin-bottom:200px;
+}
+.descripcion{
+    margin-left:auto;
+    margin-right:auto;
+    max-height: 140px;
+    max-width: 400px;
+    text-align:center;
+    overflow-y: scroll;
+}
+.envio{
+    position:absolute;
+    margin-top: 150px;
+    color: #00A650;
+}
+
+.logo {
+    max-height: 90px;
+    max-width: 90px;
+
+}
+.return {
+    max-height: 60px;
+    max-width: 60px;
+    position:fixed;
+    margin-top:20px;
+    margin-left:20px;
+
+}
+.spinner{
+    margin-top:100px;
+    width: 1000px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.paginator{
+    justify-content: center;
+    display: flex;
+    margin-top:50px;
+}
+.tituloCriticas{
+    margin-top:20px;
+    margin-left:20px;
+}
+.descripcionProducto{
+    float:right;
+    margin-right: 70px;
+    margin-top: 50px;
+}

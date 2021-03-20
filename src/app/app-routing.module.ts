@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MenuComponent} from './menu/menu.component'
+import { MenuComponent} from './menu/menu.component';
+import {DetalleComponent} from './detalle/detalle.component'
 
 const routes: Routes = [{
   path:'',
@@ -11,6 +12,10 @@ const routes: Routes = [{
   path:'main',
   component:MenuComponent,
   canActivate: []
+},
+{
+  path: 'detalles/:id',
+  component: DetalleComponent
 }];
 
 @NgModule({
