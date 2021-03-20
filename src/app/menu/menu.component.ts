@@ -123,4 +123,7 @@ export class MenuComponent implements OnInit {
         },
       );
   }
+  ngOnDestroy(){
+    localStorage.setItem('owners', JSON.stringify(this.owners));
+  }
 }
