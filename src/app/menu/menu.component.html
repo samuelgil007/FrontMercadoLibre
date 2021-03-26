@@ -27,7 +27,7 @@
     <mat-grid-list cols="2" rowHeight="2:1" gutterSize="10px">
       <ng-container *ngFor="let res of resultados; index as i">
 
-        <mat-grid-tile class="fondo teamSelector" (click)="guardarDatos()" [routerLink]="['/detalles', res.id]">
+        <mat-grid-tile class="fondo teamSelector" [routerLink]="['/detalles', res.id]">
           <img class="images imagen" src={{res.thumbnail}} />
           <p></p>
           <b class="titulo">{{res.title}}</b>

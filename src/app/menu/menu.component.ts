@@ -16,7 +16,7 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     setInterval(() => {
       localStorage.setItem('owners', JSON.stringify(this.owners));
-    }, 1000);
+    }, 750);
     this.busqueda = JSON.parse(localStorage.getItem('busqueda')) != null ? JSON.parse(localStorage.getItem('busqueda')) : "";
     this.resultados = JSON.parse(localStorage.getItem('resultados')) != null ? JSON.parse(localStorage.getItem('resultados')) : [];
     this.total = JSON.parse(localStorage.getItem('total'));
@@ -65,7 +65,7 @@ export class MenuComponent implements OnInit {
               string = ''
             }
           }
-          console.log(this.owners)
+          /* console.log(this.owners) */
           localStorage.setItem('resultados', JSON.stringify(this.resultados));
           this.total = res.paging.total > 1000 ? 1000 : res.paging.total;
           localStorage.setItem('total', JSON.stringify(this.total));
@@ -114,7 +114,7 @@ export class MenuComponent implements OnInit {
               string = ''
             }
           }
-          console.log(this.owners)
+          /* console.log(this.owners) */
           localStorage.setItem('resultados', JSON.stringify(this.resultados));
           localStorage.setItem('pagina', JSON.stringify(paginaDestino));
         },
